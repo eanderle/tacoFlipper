@@ -44,8 +44,8 @@ function Update () {
 	FrontRightWheel.motorTorque = EngineTorque / GearRatio[CurrentGear] * Input.GetAxis("Vertical");
 		
 	// the steer angle is an arbitrary value multiplied by the user input.
-	FrontLeftWheel.steerAngle = 10 * Input.GetAxis("Horizontal");
-	FrontRightWheel.steerAngle = 10 * Input.GetAxis("Horizontal");
+	FrontLeftWheel.steerAngle = 33 * Input.GetAxis("Horizontal");
+	FrontRightWheel.steerAngle = 33 * Input.GetAxis("Horizontal");
 }
 
 function ShiftGears() {
