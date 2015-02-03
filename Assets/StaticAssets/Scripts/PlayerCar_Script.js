@@ -21,7 +21,8 @@ private var EngineRPM : float = 0.0;
 
 function Start () {
 	// I usually alter the center of mass to make the car more stable. I'ts less likely to flip this way.
-rigidbody.centerOfMass += Vector3(0, -.75, .25);
+		rigidbody.centerOfMass += Vector3(0, -.75, .25);
+		//rigidbody.freezeRotation = RigidbodyConstraints.FreezeRotationZ;
     }
 
 function Update () {
