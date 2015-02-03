@@ -9,6 +9,8 @@ var FrontRightWheel : WheelCollider;
 var GearRatio : float[];
 var CurrentGear : int = 0;
 
+var brakingTorque = 100;
+
 // These variables are just for applying torque to the wheels and shifting gears.
 // using the defined Max and Min Engine RPM, the script can determine what gear the
 // car needs to be in.
@@ -19,11 +21,7 @@ private var EngineRPM : float = 0.0;
 
 
 
-function Start () {
-	// I usually alter the center of mass to make the car more stable. I'ts less likely to flip this way.
-		rigidbody.centerOfMass += Vector3(0, -.75, .25);
-		//rigidbody.freezeRotation = RigidbodyConstraints.FreezeRotationZ;
-    }
+function Start () {}
 
 function Update () {
 	
@@ -39,14 +37,34 @@ function Update () {
 		audio.pitch = 2.0;
 	}
 
-	// finally, apply the values to the wheels.	The torque applied is divided by the current gear, and
-	// multiplied by the user input variable.
-	FrontLeftWheel.motorTorque = EngineTorque / GearRatio[CurrentGear] * Input.GetAxis("Vertical");
-	FrontRightWheel.motorTorque = EngineTorque / GearRatio[CurrentGear] * Input.GetAxis("Vertical");
+	var verticalInput = Input.GetAxis("Vertical");
+	var zVelocity = rigidbody.velocity.z;
+	if (zVelocity > 0 && verticalInput < 0) {
+		applyBrakeTorque(-1 * brakingTorque);
+	}
+	else if (zVelocity < 0 && verticalInput > 0) {
+		applyBrakeTorque(brakingTorque);
+	}
+	else {
+		// finally, apply the values to the wheels.	The torque applied is divided by the current gear, and
+		// multiplied by the user input variable.
+		applyDriveTorque(EngineTorque / GearRatio[CurrentGear] * verticalInput);
+	}
 		
 	// the steer angle is an arbitrary value multiplied by the user input.
-	FrontLeftWheel.steerAngle = 33 * Input.GetAxis("Horizontal");
-	FrontRightWheel.steerAngle = 33 * Input.GetAxis("Horizontal");
+	var steerAngle = 33 * Input.GetAxis("Horizontal");
+	FrontLeftWheel.steerAngle = steerAngle;
+	FrontRightWheel.steerAngle = steerAngle;
+}
+
+private function applyDriveTorque(torque) {
+	FrontLeftWheel.motorTorque = torque;
+	FrontRightWheel.motorTorque = torque;
+}
+
+private function applyBrakeTorque(torque) {
+	FrontLeftWheel.motorTorque = torque;
+	FrontRightWheel.motorTorque = torque;
 }
 
 function ShiftGears() {
