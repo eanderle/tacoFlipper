@@ -187,7 +187,7 @@ WheelCollider:
   m_Radius: .5
   m_SuspensionDistance: .100000001
   m_SuspensionSpring:
-    spring: 1
+    spring: 5
     damper: 0
     targetPosition: 0
   m_Mass: 1
@@ -271,7 +271,7 @@ MeshCollider:
   m_GameObject: {fileID: 459096407}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_SmoothSphereCollisions: 0
   m_Convex: 1
@@ -527,8 +527,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1167714521}
-  m_LocalRotation: {x: .261708975, y: -.425974578, z: .130202815, w: .856213391}
-  m_LocalPosition: {x: 28.7000008, y: 13.5, z: -26.1000004}
+  m_LocalRotation: {x: .255372733, y: .465320557, z: -.142229259, w: .835483372}
+  m_LocalPosition: {x: -19.0499992, y: 8.53999996, z: -11.7700005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -709,7 +709,7 @@ WheelCollider:
   m_Radius: .5
   m_SuspensionDistance: .100000001
   m_SuspensionSpring:
-    spring: 1
+    spring: 5
     damper: 0
     targetPosition: 0
   m_Mass: 1
@@ -794,7 +794,7 @@ WheelCollider:
   m_Radius: .5
   m_SuspensionDistance: .100000001
   m_SuspensionSpring:
-    spring: 1
+    spring: 5
     damper: 0
     targetPosition: 0
   m_Mass: 1
@@ -859,7 +859,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1661869695}
   serializedVersion: 2
-  m_Mass: 2000
+  m_Mass: 5000
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -884,8 +884,8 @@ MonoBehaviour:
   GearRatio:
   - 2
   CurrentGear: 0
-  brakingTorque: 100
-  EngineTorque: 90
+  brakingTorque: 45
+  EngineTorque: 45
   MaxEngineRPM: 3000
   MinEngineRPM: 1000
 --- !u!23 &1661869699
@@ -1002,7 +1002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WheelL: {fileID: 1773454543}
   WheelR: {fileID: 451296424}
-  AntiRoll: 5000
+  AntiRoll: 10000
 --- !u!114 &1661869704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1016,7 +1016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WheelL: {fileID: 1409312184}
   WheelR: {fileID: 1660630537}
-  AntiRoll: 5000
+  AntiRoll: 10000
 --- !u!1 &1695300618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,7 +1131,7 @@ WheelCollider:
   m_Radius: .5
   m_SuspensionDistance: .100000001
   m_SuspensionSpring:
-    spring: 1
+    spring: 5
     damper: 0
     targetPosition: 0
   m_Mass: 1
