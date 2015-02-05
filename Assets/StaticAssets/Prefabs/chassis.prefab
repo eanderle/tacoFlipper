@@ -244,7 +244,7 @@ GameObject:
   - 54: {fileID: 5409372}
   - 82: {fileID: 8209372}
   m_Layer: 0
-  m_Name: chasis
+  m_Name: chassis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -778,6 +778,7 @@ MonoBehaviour:
   GearRatio:
   - 2
   CurrentGear: 0
+  brakingTorque: 100
   EngineTorque: 90
   MaxEngineRPM: 3000
   MinEngineRPM: 1000
