@@ -428,15 +428,24 @@ function ApplyThrottle(canDrive : boolean, relativeVelocity : Vector3)
 		var throttleForce : float = 0;
 		var brakeForce : float = 0;
 		
-		if (HaveTheSameSign(relativeVelocity.z, throttle))
+		if (HaveTheSameSign(relativeVelocity.z, throttle) && !handbrake)
 		{
-			if (!handbrake)
-				throttleForce = Mathf.Sign(throttle) * currentEnginePower * rigidbody.mass;
+			
+			throttleForce = Mathf.Sign(throttle) * currentEnginePower * rigidbody.mass;
+			if (relativeVelocity.z < 0) {
+				throttleForce /= 4;
+			}
+			Debug.Log("had the same sign, no handbrake -- " + throttleForce);
+
 		}
-		else
-			brakeForce = Mathf.Sign(throttle) * engineForceValues[0] * rigidbody.mass;
+		else {
+			brakeForce = (throttle == 0 ? 0 : Mathf.Sign(throttle)) * engineForceValues[0] * rigidbody.mass;
+			Debug.Log("didn't have the same sign -- " + brakeForce);
+		}
 		
-		rigidbody.AddForce(transform.forward * Time.deltaTime * (throttleForce + brakeForce));
+		var finalForce = transform.forward * Time.deltaTime * (throttleForce + brakeForce);
+		Debug.Log("throttle force -- " + throttleForce + " -- brakeForce -- " + brakeForce + " -- finalForce -- " + finalForce);
+		rigidbody.AddForce(finalForce);
 	}
 }
 

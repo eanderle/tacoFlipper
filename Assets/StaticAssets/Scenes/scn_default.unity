@@ -814,7 +814,7 @@ MonoBehaviour:
   - {fileID: 1113986499}
   - {fileID: 39123966}
   topSpeed: 250
-  numberOfGears: 1
+  numberOfGears: 5
   maximumTurn: 45
   minimumTurn: 0
   resetTime: 5
