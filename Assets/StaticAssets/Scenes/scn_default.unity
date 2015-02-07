@@ -679,7 +679,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1144335465}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -24.9899998, y: 0, z: -24.5900002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1430046393}
@@ -813,10 +813,10 @@ MonoBehaviour:
   rearWheels:
   - {fileID: 1113986499}
   - {fileID: 39123966}
-  topSpeed: 200
-  numberOfGears: 5
+  topSpeed: 250
+  numberOfGears: 1
   maximumTurn: 45
-  minimumTurn: 10
+  minimumTurn: 0
   resetTime: 5
   wheelCount: 4
 --- !u!23 &1144335472
@@ -1234,7 +1234,7 @@ Transform:
   m_GameObject: {fileID: 1298430207}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -17.3899994, y: -1.51999998, z: -18.5599995}
-  m_LocalScale: {x: 50, y: 1, z: 50}
+  m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4

@@ -133,7 +133,7 @@ function SetupWheelFrictionCurve()
 	wfc.extremumValue = 50;
 	wfc.asymptoteSlip = 2;
 	wfc.asymptoteValue = 25;
-	wfc.stiffness = 1;
+	wfc.stiffness = 1.1;
 }
 
 function SetupWheel(wheelTransform : Transform, isFrontWheel : boolean)
@@ -444,7 +444,8 @@ function ApplySteering(canSteer : boolean, relativeVelocity : Vector3)
 {
 	if(canSteer)
 	{
-		var turnRadius : float = 3.0 / Mathf.Sin((90 - (steer * 30)) * Mathf.Deg2Rad);
+		//var turnRadius : float = 3.0 / Mathf.Sin((90 - (steer * 30)) * Mathf.Deg2Rad);
+		var turnRadius : float = 0.0;
 		var minMaxTurn : float = EvaluateSpeedToTurn(rigidbody.velocity.magnitude);
 		var turnSpeed : float = Mathf.Clamp(relativeVelocity.z / turnRadius, -minMaxTurn / 10, minMaxTurn / 10);
 		
@@ -499,8 +500,8 @@ function HaveTheSameSign(first : float, second : float) : boolean
 
 function EvaluateSpeedToTurn(speed : float)
 {
-	if(speed > topSpeed / 2)
-		return minimumTurn;
+	//if(speed > topSpeed / 2)
+	//	return minimumTurn;
 	
 	var speedIndex : float = 1 - (speed / (topSpeed / 2));
 	return minimumTurn + speedIndex * (maximumTurn - minimumTurn);
