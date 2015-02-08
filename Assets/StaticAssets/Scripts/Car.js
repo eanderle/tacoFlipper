@@ -100,6 +100,8 @@ function FixedUpdate()
 	
 	ApplyThrottle(canDrive, relativeVelocity);
 	
+	ApplyEngineBrake(relativeVelocity);
+	
 	ApplySteering(canSteer, relativeVelocity);
 }
 
@@ -446,6 +448,14 @@ function ApplyThrottle(canDrive : boolean, relativeVelocity : Vector3)
 		var finalForce = transform.forward * Time.deltaTime * (throttleForce + brakeForce);
 		Debug.Log("throttle force -- " + throttleForce + " -- brakeForce -- " + brakeForce + " -- finalForce -- " + finalForce);
 		rigidbody.AddForce(finalForce);
+	}
+}
+
+function ApplyEngineBrake(relativeVelocity : Vector3) {
+	if (!(relativeVelocity.z >= -0.1 && relativeVelocity.z <= 0.1) && throttle == 0) {
+		var engineBrakeForce = transform.forward * -Mathf.Sign(relativeVelocity.z) * Time.deltaTime * engineForceValues[0] * rigidbody.mass;
+		Debug.Log("ENGINE BRAAAAAAAAAAKE -- " + engineBrakeForce);
+		rigidbody.AddForce(engineBrakeForce);
 	}
 }
 
